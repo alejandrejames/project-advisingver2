@@ -46,7 +46,7 @@
 												<td>'.$num.'</td>
 												<td>'.$row['subject_name'].'</td>
 												<td>'.$row['subject_description'].'</td>
-												<td><a href="../edit/subject.php?studid='.$row['subject_id'].'"><button class="btn btn-success">Edit</button></a></td>
+												<td><a href="../edit/subject.php?subid='.$row['subject_id'].'"><button class="btn btn-success">Edit</button></a></td>
 											</tr>
 										';
 									}

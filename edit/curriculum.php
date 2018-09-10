@@ -68,6 +68,7 @@
 					    <h3 class="panel-title">Add subject listing</h3>
 					  </div>
 					  <div class="panel-body">
+					  	<input type="text" class="form-control" name="searchsubcur" id="searchsubcur" placeholder="Search">
 					    <div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
@@ -85,6 +86,11 @@
 										$sql = "SELECT * FROM subject";
 										$result = $conn->query($sql);
 										while($row = $result->fetch_assoc()){
+											$sql2 = "SELECT * FROM subject_curriculum WHERE subject_id = '".$row['subject_id']."'";
+											$result2 = $conn->query($sql2);
+											if($result2->fetch_assoc() > 0)
+												{}
+											else
 											echo '
 												<tr>
 													<td>'.$row['subject_name'].'</td>
@@ -187,11 +193,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist11">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '1' AND subject_semester = '1'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,1)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -214,11 +228,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist12">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '1' AND subject_semester = '2'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,2)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -241,11 +263,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist13">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '1' AND subject_semester = '3'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,3)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -272,11 +302,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist21">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '2' AND subject_semester = '1'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,1)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -299,11 +337,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist22">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '2' AND subject_semester = '2'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,2)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -326,11 +372,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist23">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '2' AND subject_semester = '3'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,3)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -357,11 +411,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist31">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '3' AND subject_semester = '1'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,1)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -384,11 +446,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist32">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '3' AND subject_semester = '2'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,2)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -411,11 +481,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist33">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '3' AND subject_semester = '3'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,3)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -442,11 +520,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist41">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '4' AND subject_semester = '1'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,1)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -469,11 +555,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist42">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '4' AND subject_semester = '2'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,2)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
@@ -496,11 +590,19 @@
 												  				</tr>
 											  				</thead>
 											  				<tbody id="tbodysublist43">
-											  					<tr>
-											  						<td>CS21</td>
-											  						<td>Discrete</td>
-											  						<td><button class="btn btn-danger">Remove</button></td>
-											  					</tr>
+											  					<?php
+											  						$sql = "SELECT * FROM subject,subject_curriculum WHERE subject.subject_id = subject_curriculum.subject_id AND subject_yrlvl = '4' AND subject_semester = '3'";
+											  						$result = $conn->query($sql);
+											  						while($row = $result->fetch_assoc()){
+											  							echo '
+											  								<tr>
+											  									<td>'.$row['subject_name'].'</td>
+											  									<td>'.$row['subject_description'].'</td>
+											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,3)">Remove</button></td>
+											  								</tr>
+											  								';
+											  						}
+											  					?>
 											  				</tbody>
 											  			</table>
 											  		</div>
