@@ -19,55 +19,38 @@
 		<div class="container-fluid">
 			<ol class="breadcrumb">
 			  <li><a href="../index.php">Home</a></li>
-			  <li class="active">All Students</li>
+			  <li class="active">All Subjects</li>
 			</ol>
 			<div class="container-fluid">
-				<input type="text" class="form-control" name="studentsearchbar" placeholder="Enter student name">
-				<div class="col-md-6">
-					<label for="filtercolleges">College</label>
-					<select class="form-control" id="filtercolleges">
-						<option value="0">All</option>
-					</select>
-				</div>
-				<div class="col-md-6">
-					<label for="filtercurriculum">Curriculum</label>
-					<select class="form-control" id="filtercurriculum">
-						<option value="0">All</option>
-					</select>
-				</div>
+				<input type="text" class="form-control" name="subjectsearchbar" placeholder="Enter subject name">
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Student No. </th>
-									<th>Last Name</th>
-									<th>First Name</th>
-									<th>College</th>
-									<th>Curriculum</th>
-									<th>View Details</th>
-									<th>Advise</th>
+									<th>  </th>
+									<th>Subject Code</th>
+									<th>Subject Name</th>
+									<th>Edit Details</th>
 								</tr>
 							</thead>
-							<tbody id="tbodyallstud">
+							<tbody id="tbodyallsub">
 								<?php
-									$sql = "SELECT * FROM student,college,curriculum WHERE student.college_id=college.college_id AND student.curriculum_id = curriculum.curriculum_id";
+									$sql = "SELECT * FROM subject";
 									$result = $conn->query($sql);
+									$num = 0;
 									while($row = $result->fetch_assoc()){
+										$num++;
 										echo '
 											<tr>
-												<td>'.$row['student_id'].'</td>
-												<td>'.$row['student_lname'].'</td>
-												<td>'.$row['student_fname'].'</td>
-												<td>'.$row['college_name'].'</td>
-												<td>'.$row['curriculum_name'].'</td>
-												<td><a href="../edit/student.php?studid='.$row['student_id'].'"><button class="btn btn-success">Edit</button></a></td>
-												<td><button class="btn btn-primary">Advise</button></td>
+												<td>'.$num.'</td>
+												<td>'.$row['subject_name'].'</td>
+												<td>'.$row['subject_description'].'</td>
+												<td><a href="../edit/subject.php?studid='.$row['subject_id'].'"><button class="btn btn-success">Edit</button></a></td>
 											</tr>
 										';
 									}
-								?>
-								
+								?>	
 							</tbody>
 						</table>
 					</div>
@@ -76,9 +59,8 @@
 				  <ul class="pagination">
 				    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 				  </ul>
-				</nav>
-			</div>		
-		</div>
+				</nav>		
+			</div>
 	<!--Scripts-->
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
