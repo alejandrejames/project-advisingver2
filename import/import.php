@@ -22,7 +22,7 @@
 			  <li class="active">Import</li>
 			</ol>
 			<div class="container-fluid">
-				
+				<!--Dito nyo na lang ilagay yung code sa pag import-->
 			</div>		
 		</div>
 	<!--Scripts-->
