@@ -33,7 +33,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#newsubject">New Subjects</a></li>
                           </ul>
                         </li>
-                        <li><a href="#">Import</a></li>
+                        <li><a href="import/import.php">Import</a></li>
                         <li><a href="#">Reports</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
@@ -88,7 +88,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#newsubject">New Subjects</a></li>
                           </ul>
                         </li>
-                        <li><a href="#">Import</a></li>
+                        <li><a href="../import/import.php">Import</a></li>
                         <li><a href="#">Reports</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">

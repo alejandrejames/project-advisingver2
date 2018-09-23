@@ -109,6 +109,9 @@
 						  	</div>
 						</div>
 					</div>
+					<?php
+						
+					?>
 					<div class="col-md-8">
 						<ul class="nav nav-tabs">
 						  <li role="presentation" class="active"><a href="#schoolyr1" aria-controls="products" role="tab" data-toggle="tab">2017-2018</a></li>

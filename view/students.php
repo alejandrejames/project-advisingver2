@@ -62,7 +62,7 @@
 												<td>'.$row['college_name'].'</td>
 												<td>'.$row['curriculum_name'].'</td>
 												<td><a href="../edit/student.php?studid='.$row['student_id'].'"><button class="btn btn-success">Edit</button></a></td>
-												<td><button class="btn btn-primary">Advise</button></td>
+												<td><a href="../advising/advise.php?studid='.$row['student_id'].'"><button class="btn btn-primary">Advise</button></a></td>
 											</tr>
 										';
 									}

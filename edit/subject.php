@@ -120,6 +120,7 @@
 						  	</div>
 							<div class="panel-body">
 						    	<div class="container-fluid">
+						    		<input type="text" class="form-control" name="searchpreqsub" id="searchpreqsub" placeholder="Search">
 						    		<div class="table-responsive">
 						    			<table class="table table-striped">
 						    				<thead>
