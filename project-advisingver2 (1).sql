@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2018 at 05:49 PM
+-- Generation Time: Sep 27, 2018 at 05:15 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -274,11 +274,34 @@ INSERT INTO `student_schlyr` (`student_schlyr_id`, `student_schlyr`) VALUES
 --
 
 CREATE TABLE `student_subject` (
-  `student_id` int(255) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
   `subject_id` int(255) NOT NULL,
   `subject_grade` int(255) NOT NULL,
-  `student_schlyr_id` int(255) NOT NULL
+  `student_schlyr_id` int(255) NOT NULL,
+  `curriculum_id` int(255) NOT NULL,
+  `semester` int(255) NOT NULL,
+  `year_level` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_subject`
+--
+
+INSERT INTO `student_subject` (`student_id`, `subject_id`, `subject_grade`, `student_schlyr_id`, `curriculum_id`, `semester`, `year_level`) VALUES
+('2015-11926', 9, 90, 1, 1, 1, 1),
+('2015-11926', 10, 85, 1, 1, 1, 1),
+('2015-11926', 11, 0, 1, 1, 1, 1),
+('2015-11926', 12, 0, 1, 1, 1, 1),
+('2015-11926', 13, 0, 1, 1, 1, 1),
+('2015-11926', 14, 0, 1, 1, 1, 1),
+('2015-11926', 15, 0, 1, 1, 1, 1),
+('2015-02945', 9, 90, 1, 1, 1, 1),
+('2015-02945', 10, 91, 1, 1, 1, 1),
+('2015-02945', 11, 0, 1, 1, 1, 1),
+('2015-02945', 12, 0, 1, 1, 1, 1),
+('2015-02945', 13, 0, 1, 1, 1, 1),
+('2015-02945', 14, 0, 1, 1, 1, 1),
+('2015-02945', 15, 0, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -307,7 +330,14 @@ INSERT INTO `subject` (`subject_id`, `subject_name`, `subject_description`, `lec
 (5, 'CS Elec 3', 'CS Elective 3', 3, 0, 3),
 (6, 'CS Elec 4', 'CS Elective 4', 3, 0, 3),
 (7, 'Free Elec 2', 'Free Elective 2', 3, 0, 0),
-(8, 'CS21', 'Discrete Structures', 3, 0, 3);
+(8, 'CS21', 'Discrete Structures', 3, 0, 3),
+(9, 'CS1', 'ICT Fundamentals', 2, 1, 3),
+(10, 'CS11', 'Intro to Computer Science', 2, 1, 3),
+(11, 'Math 1B', 'College Algebra', 5, 0, 5),
+(12, 'English 1', 'Study and Thinking Skills', 3, 0, 3),
+(13, 'Fil. 1', 'Komunikasyon sa Akademikong Filipino', 3, 0, 3),
+(14, 'PE 1', 'Physical Fitness and Gymnastics', 2, 0, 2),
+(15, 'NSTP 1', 'Nation Service Training Program 1', 3, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -327,8 +357,16 @@ CREATE TABLE `subject_curriculum` (
 --
 
 INSERT INTO `subject_curriculum` (`subject_id`, `curriculum_id`, `subject_yrlvl`, `subject_semester`) VALUES
-(1, 1, 1, 1),
-(2, 1, 1, 1);
+(5, 1, 1, 2),
+(6, 1, 1, 2),
+(7, 1, 1, 2),
+(9, 1, 1, 1),
+(10, 1, 1, 1),
+(11, 1, 1, 1),
+(12, 1, 1, 1),
+(13, 1, 1, 1),
+(14, 1, 1, 1),
+(15, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -410,13 +448,6 @@ ALTER TABLE `student`
 --
 ALTER TABLE `student_schlyr`
   ADD PRIMARY KEY (`student_schlyr_id`);
-
---
--- Indexes for table `student_subject`
---
-ALTER TABLE `student_subject`
-  ADD UNIQUE KEY `student_id` (`student_id`),
-  ADD UNIQUE KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `subject`
