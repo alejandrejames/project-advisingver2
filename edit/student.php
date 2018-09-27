@@ -113,18 +113,39 @@
 						
 					?>
 					<div class="col-md-8">
+
 						<ul class="nav nav-tabs">
-						  <li role="presentation" class="active"><a href="#schoolyr1" aria-controls="products" role="tab" data-toggle="tab">2017-2018</a></li>
-						  <li role="presentation"><a href="#schoolyr2" aria-controls="products" role="tab" data-toggle="tab">2018-2019</a></li>
-						  <li role="presentation"><a href="#schoolyr3" aria-controls="products" role="tab" data-toggle="tab">2019-2020</a></li>
+						  <?php
+						  		$sql = "SELECT DISTINCT student_schlyr_id FROM student_subject WHERE student_id = '".$studid."'";
+						  		$result = $conn->query($sql);
+						  		while($row = $result->fetch_assoc()){
+						  			$sql2 = "SELECT * FROM student_schlyr WHERE student_schlyr_id = '".$row['student_schlyr_id']."'";
+						  			$result2 = $conn->query($sql2);
+						  			$num = 0;
+						  			while($row2 = $result2->fetch_assoc()){
+						  				if($num==0){
+						  					echo '<input type="text" id="frstid" value="'.$row2['student_schlyr_id'].'" hidden>';
+						  					echo '
+						  					<li role="presentation" class="active"><a href="#schoolyr'.$row2['student_schlyr_id'].'" aria-controls="products" role="tab" data-toggle="tab">'.$row2['student_schlyr'].'</a></li>
+						  					';
+						  					$num++;
+						  				}
+						  				else
+						  					echo '
+						  					<li role="presentation"><a href="#schoolyr'.$row2['student_schlyr_id'].'" aria-controls="products" role="tab" data-toggle="tab">'.$row2['student_schlyr'].'</a></li>
+						  					';						  				
+						  			}
+						  		}
+						  ?>
 						</ul>
-						<div class="tab-content">
+						<div class="tab-content" id="studtabctn">
 							<div role="tabpanel" class="tab-pane active" id="schoolyr1">
 								<div class="form-group">
 									<label for="selectgrades">Select Semester</label>
 									<select class="form-control" name="selectgrades" id="selectgrades">
-										<option>1st Sem</option>
-										<option>2nd Sem</option>
+										<option value="1">1st Sem</option>
+										<option value="2">2nd Sem</option>
+										<option value="3">Summer</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -138,7 +159,10 @@
 													<th>Update</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id="studsublist">
+												<?php
+
+												?>
 												<tr>
 													<td>CS01</td>
 													<td>ICT</td>

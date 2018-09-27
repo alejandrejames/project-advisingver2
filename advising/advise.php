@@ -30,11 +30,14 @@
 			<div class="container-fluid">
 				<ol class="breadcrumb">
 			  		<li><a href="../index.php">Home</a></li>
-			  		<li><a href="#">Advise</a></li>
+			  		<li><a href="../view/students.php">All Students</a></li>
 			  		<li class="active"><?php echo $studlname.' '.$studfname;?></li>
 				</ol>
 				<div class="container-fluid">
+					<div id="advdet" style="display: block;">
 					<div class="col-md-12">
+						<input type="text" name="studidins" id="studidins" value="<?php echo $studid?>" hidden>
+						<input type="text" name="curridins" id="curridins" value="<?php echo $currid?>" hidden>
 						<select class="form-control" name="selectschlyr" id="selectschlyr">
 							<?php
 								$sql = "SELECT * FROM student_schlyr";
@@ -67,8 +70,68 @@
 					<div class="col-md-12">
 						<div class="btn-group btn-group-justified" role="group" aria-label="...">
 						  <div class="btn-group" role="group">
-						    <button type="submit" class="btn btn-success" id="advisebut1">Confirm</button>
+						    <button type="button" class="btn btn-success" id="advisebut1">Advise</button>
 						  </div>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-12" id="notif-area"></div>
+					<div class="container-fluid" style="display: none;" id="advspnl">
+						<div class="col-md-6">
+							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Advised Subjects</h3>
+							  </div>
+							  <div class="panel-body">
+							    <table class="table table-striped">
+							    	<thead>
+							    		<th>Subject Code</th>
+							    		<th>Subject Name</th>
+							    		<th>Remove</th>	
+							    	</thead>
+							    	<tbody id="advstbl">
+							    		
+							    	</tbody>
+							    </table>
+								<button class="btn btn-primary" id="advbutfnl">Finalize</button>
+							  </div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Add subjects</h3>
+							  </div>
+							  <div class="panel-body">
+							    <table class="table table-striped">
+							    	<thead>
+							    		<tr>
+							    			<th>Add</th>
+							    			<th>Subject Code</th>
+							    			<th>Subject Name</th>
+							    		</tr>	
+							    	</thead>
+							    	<tbody id="advsadd">
+							    		<?php
+							    			$sql = "SELECT * FROM subject_curriculum,subject WHERE subject_curriculum.subject_id = subject.subject_id AND curriculum_id = '".$currid."'";
+							    			$result = $conn->query($sql);
+							    			while($row = $result->fetch_assoc()){
+							    				$sql2 = "SELECT * FROM student_subject WHERE subject_id = '".$row['subject_id']."'";
+							    				$result2 = $conn->query($sql2);
+							    				if($result2->fetch_assoc() == 0)
+							    						echo '
+							    							<tr>
+							    								<td><button class="btn btn-success" onclick="advaddsub('.$row['subject_id'].')">Add</button></td>
+							    								<td>'.$row['subject_name'].'</td>
+							    								<td>'.$row['subject_description'].'</td>
+							    							</tr>
+							    							';
+							    			}
+							    		?>
+							    	</tbody>
+							    </table>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -80,5 +143,6 @@
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
+	<script type="text/javascript" src="../js/advisefunc.js"></script>
 	</body>
 </html>

@@ -45,4 +45,39 @@ $(document).ready(function(){
         $("#editstudCurriculum").attr('disabled','true');
         $("#editstudCollege").attr('disabled','true');
     });
+
+    $.post("../backend/studsubload.php",
+    {
+        studid: $("#editstudid1").val(),
+        schlyr: $("#frstid").val()
+    },
+    function(data){
+        $("#studsublist").html(data);
+    });
+
+    $("#selectgrades").change(function(){
+        $.post("../backend/studsubload.php",
+        {
+            studid: $("#editstudid1").val(),
+            schlyr: $("#frstid").val(),
+            sem: $("#selectgrades").val()
+        },
+        function(data){
+            $("#studsublist").html(data);
+        });
+    });
 });
+
+function updtgrd(subid){
+    $.post("../backend/studsubupdt.php",
+        {
+            studid: $("#editstudid1").val(),
+            schlyr: $("#frstid").val(),
+            sem: $("#selectgrades").val(),
+            subid: subid,
+            grd: $("#studgrdinp"+subid).val()
+        },
+        function(data){
+            $("#notif-area").html(data);
+        });
+}
