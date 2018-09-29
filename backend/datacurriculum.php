@@ -5,7 +5,7 @@
 
 	switch ($code) {
 		case '1':
-			$sql = "SELECT * FROM subject";
+			$sql = "SELECT * FROM subject LIMIT 0,10";
 			$result = $conn->query($sql);
 			while($row = $result->fetch_assoc()){
 											$sql2 = "SELECT * FROM subject_curriculum WHERE subject_id = '".$row['subject_id']."'";

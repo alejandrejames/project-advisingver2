@@ -40,6 +40,7 @@
 						  	</div>
 							<div class="panel-body">
 								<div id="notif-area"></div>
+								<input type="text" class="adddata" value="<?php echo $subid?>" hidden>
 								<button class="btn btn-default" id="editsubdet">Edit</button>
 								<div class="container-fluid">
 									<input type=text id="editsubid" value="<?php echo $subid?>" hidden>
@@ -120,7 +121,8 @@
 						  	</div>
 							<div class="panel-body">
 						    	<div class="container-fluid">
-						    		<input type="text" class="form-control" name="searchpreqsub" id="searchpreqsub" placeholder="Search">
+						    		<input type="text" id="search-type" value="editsubject" hidden>
+									<input type="text" class="form-control" name="subjectsearchbar" placeholder="Enter subject name" id="searchbar">
 						    		<div class="table-responsive">
 						    			<table class="table table-striped">
 						    				<thead>
@@ -133,9 +135,9 @@
 						    						<th>Add</th>
 						    					</tr>
 						    				</thead>
-						    				<tbody id="tbodyaddprereq">
+						    				<tbody id="tbodyaddprereq" class="pagina-tbl srch-rslt">
 						    					<?php
-						    						$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."'";
+						    						$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."' LIMIT 0,10";
 						    						$result = $conn->query($sql);
 						    						while($row = $result->fetch_assoc()){
 						    							$sql2 = "SELECT * FROM subject_preq WHERE subject_id = '".$subid."' AND subject_id_preq = '".$row['subject_id']."'";
@@ -157,11 +159,26 @@
 						    					?>
 						    				</tbody>
 						    			</table>
-						    			<nav aria-label="...">
-											<ul class="pagination">
-										    	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-										  	</ul>
-										</nav>
+						    			<div id="pagina-sect">
+						    			<?php
+											$sql = "SELECT COUNT(*) AS TOTAL FROM subject WHERE subject_id != '".$subid."'";
+						                    $result = $conn->query($sql);
+											$row = $result->fetch_assoc();
+											$total = $row['TOTAL'];
+											$numpages = $total/10;
+											$pagenum = 10;
+
+											echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
+												<nav aria-label="Page Navigation">
+						                            <ul class="pagination">';
+						                    for($i=0;$i<$numpages;$i++){
+												if($i==0)
+													echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',3,0,'.$pagenum.','.$subid.')">'.($i+1).'</a></li>';
+												else 
+													echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',3,'.$pagenum.','.($pagenum = $pagenum+$pagenum).','.$subid.')">'.($i+1).'</a></li>';
+						                                    }
+										?>
+										</div>
 						    		</div>
 						    	</div>
 						  	</div>
@@ -177,5 +194,7 @@
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
 	<script type="text/javascript" src="../js/subjectfuncs.js"></script>
+	<script type="text/javascript" src="../js/pagination.js"></script>
+	<script type="text/javascript" src="../js/search.js"></script>
 	</body>
 </html>

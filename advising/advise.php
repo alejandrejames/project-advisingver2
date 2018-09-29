@@ -37,7 +37,7 @@
 					<div id="advdet" style="display: block;">
 					<div class="col-md-12">
 						<input type="text" name="studidins" id="studidins" value="<?php echo $studid?>" hidden>
-						<input type="text" name="curridins" id="curridins" value="<?php echo $currid?>" hidden>
+						<input type="text" class="adddata" name="curridins" id="curridins" value="<?php echo $currid?>" hidden>
 						<select class="form-control" name="selectschlyr" id="selectschlyr">
 							<?php
 								$sql = "SELECT * FROM student_schlyr";
@@ -103,6 +103,8 @@
 							    <h3 class="panel-title">Add subjects</h3>
 							  </div>
 							  <div class="panel-body">
+							  	<input type="text" id="search-type" value="advise" hidden>
+								<input type="text" class="form-control" name="subjectsearchbar" placeholder="Enter subject name" id="searchbar">
 							    <table class="table table-striped">
 							    	<thead>
 							    		<tr>
@@ -111,9 +113,9 @@
 							    			<th>Subject Name</th>
 							    		</tr>	
 							    	</thead>
-							    	<tbody id="advsadd">
+							    	<tbody id="advsadd" class="pagina-tbl srch-rslt">
 							    		<?php
-							    			$sql = "SELECT * FROM subject_curriculum,subject WHERE subject_curriculum.subject_id = subject.subject_id AND curriculum_id = '".$currid."'";
+							    			$sql = "SELECT * FROM subject_curriculum,subject WHERE subject_curriculum.subject_id = subject.subject_id AND curriculum_id = '".$currid."' LIMIT 0,10";
 							    			$result = $conn->query($sql);
 							    			while($row = $result->fetch_assoc()){
 							    				$sql2 = "SELECT * FROM student_subject WHERE subject_id = '".$row['subject_id']."'";
@@ -130,6 +132,26 @@
 							    		?>
 							    	</tbody>
 							    </table>
+							    <div id="pagina-sect">
+						    			<?php
+											$sql = "SELECT COUNT(*) AS TOTAL FROM subject_curriculum,subject WHERE subject_curriculum.subject_id = subject.subject_id AND curriculum_id = '".$currid."'";
+						                    $result = $conn->query($sql);
+											$row = $result->fetch_assoc();
+											$total = $row['TOTAL'];
+											$numpages = $total/10;
+											$pagenum = 10;
+
+											echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
+												<nav aria-label="Page Navigation">
+						                            <ul class="pagination">';
+						                    for($i=0;$i<$numpages;$i++){
+												if($i==0)
+													echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',5,0,'.$pagenum.','.$currid.')">'.($i+1).'</a></li>';
+												else 
+													echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',5,'.$pagenum.','.($pagenum = $pagenum+$pagenum).','.$currid.')">'.($i+1).'</a></li>';
+						                                    }
+										?>
+										</div>
 							  </div>
 							</div>
 						</div>
@@ -144,5 +166,7 @@
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
 	<script type="text/javascript" src="../js/advisefunc.js"></script>
+	<script type="text/javascript" src="../js/pagination.js"></script>
+	<script type="text/javascript" src="../js/search.js"></script>
 	</body>
 </html>

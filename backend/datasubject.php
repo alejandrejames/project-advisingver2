@@ -5,7 +5,7 @@
 	$subid = $_GET['subid'];
 	switch ($code) {
 		case '1':
-			$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."'";
+			$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."' LIMIT 0,10";
 						    						$result = $conn->query($sql);
 						    						while($row = $result->fetch_assoc()){
 						    							$sql2 = "SELECT * FROM subject_preq WHERE subject_id = '".$subid."' AND subject_id_preq = '".$row['subject_id']."'";

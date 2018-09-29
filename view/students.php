@@ -22,8 +22,9 @@
 			  <li class="active">All Students</li>
 			</ol>
 			<div class="container-fluid">
-				<input type="text" class="form-control" name="studentsearchbar" placeholder="Enter student name">
-				<div class="col-md-6">
+				<input type="text" id="search-type" value="students" hidden>
+				<input type="text" class="form-control" name="subjectsearchbar" placeholder="Enter student name or Student ID" id="searchbar">
+				<!--<div class="col-md-6">
 					<label for="filtercolleges">College</label>
 					<select class="form-control" id="filtercolleges">
 						<option value="0">All</option>
@@ -34,7 +35,7 @@
 					<select class="form-control" id="filtercurriculum">
 						<option value="0">All</option>
 					</select>
-				</div>
+				</div>-->
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<table class="table table-striped">
@@ -49,9 +50,9 @@
 									<th>Advise</th>
 								</tr>
 							</thead>
-							<tbody id="tbodyallstud">
+							<tbody id="tbodyallstud" class="pagina-tbl srch-rslt">
 								<?php
-									$sql = "SELECT * FROM student,college,curriculum WHERE student.college_id=college.college_id AND student.curriculum_id = curriculum.curriculum_id";
+									$sql = "SELECT * FROM student,college,curriculum WHERE student.college_id=college.college_id AND student.curriculum_id = curriculum.curriculum_id LIMIT 0,10";
 									$result = $conn->query($sql);
 									while($row = $result->fetch_assoc()){
 										echo '
@@ -72,11 +73,26 @@
 						</table>
 					</div>
 				</div>
-				<nav aria-label="...">
-				  <ul class="pagination">
-				    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				  </ul>
-				</nav>
+				<div id="pagina-sect">
+					<?php
+						$sql = "SELECT COUNT(*) AS TOTAL FROM student,college,curriculum WHERE student.college_id=college.college_id AND student.curriculum_id = curriculum.curriculum_id";
+						$result = $conn->query($sql);
+						$row = $result->fetch_assoc();
+						$total = $row['TOTAL'];
+						$numpages = $total/10;
+						$pagenum = 10;
+
+						echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
+								<nav aria-label="Page Navigation">
+								<ul class="pagination">';
+						for($i=0;$i<$numpages;$i++){
+							if($i==0)
+								echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',6,0,'.$pagenum.')">'.($i+1).'</a></li>';
+							else 
+								echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',6,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+						}
+					?>
+				</div>
 			</div>		
 		</div>
 	<!--Scripts-->
@@ -85,5 +101,7 @@
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
+	<script type="text/javascript" src="../js/pagination.js"></script>
+	<script type="text/javascript" src="../js/search.js"></script>
 	</body>
 </html>

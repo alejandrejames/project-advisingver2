@@ -38,7 +38,7 @@
 						</div>
 					  	<div class="panel-body">
 					    	<button class="btn btn-success" id="editcurriculumdet">Edit</button>
-					    	<input type="text" id="editcurrid" value="<?php echo $currid?>" hidden>
+					    	<input type="text" id="editcurrid" class="adddata" value="<?php echo $currid?>" hidden>
 					    	<div class="form-group">
 					    		<label for="editcurriculumname"></label>
 					    		<input type="text" class="form-control" id="editcurriculumname" placeholder="Curriculum Name" disabled value="<?php echo $bclink?>">
@@ -68,7 +68,8 @@
 					    <h3 class="panel-title">Add subject listing</h3>
 					  </div>
 					  <div class="panel-body">
-					  	<input type="text" class="form-control" name="searchsubcur" id="searchsubcur" placeholder="Search">
+					  	<input type="text" id="search-type" value="editcurriculum" hidden>
+						<input type="text" class="form-control" name="subjectsearchbar" placeholder="Enter subject name" id="searchbar">
 					    <div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
@@ -81,9 +82,9 @@
 										<th>4th Year</th>
 									</tr>
 								</thead>
-								<tbody id="addsubjectcurr">
+								<tbody id="addsubjectcurr" class="pagina-tbl srch-rslt">
 									<?php
-										$sql = "SELECT * FROM subject";
+										$sql = "SELECT * FROM subject LIMIT 0,10";
 										$result = $conn->query($sql);
 										while($row = $result->fetch_assoc()){
 											$sql2 = "SELECT * FROM subject_curriculum WHERE subject_id = '".$row['subject_id']."'";
@@ -153,11 +154,26 @@
 									?>
 								</tbody>
 							</table>
-							<nav aria-label="...">
-							  <ul class="pagination">
-							    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-							  </ul>
-							</nav>
+							<div id="pagina-sect">
+						    	<?php
+									$sql = "SELECT COUNT(*) AS TOTAL FROM subject";
+									$result = $conn->query($sql);
+									$row = $result->fetch_assoc();
+									$total = $row['TOTAL'];
+									$numpages = $total/10;
+									$pagenum = 10;
+
+									echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
+										<nav aria-label="Page Navigation">
+											<ul class="pagination">';
+									for($i=0;$i<$numpages;$i++){
+										if($i==0)
+											echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,0,'.$pagenum.')">'.($i+1).'</a></li>';
+										else 
+											echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+									}
+								?>
+							</div>
 						</div>
 					  </div>
 					</div>
@@ -623,5 +639,7 @@
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
 	<script type="text/javascript" src="../js/curriculumfuncs.js"></script>
+	<script type="text/javascript" src="../js/pagination.js"></script>
+	<script type="text/javascript" src="../js/search.js"></script>
 	</body>
 </html>

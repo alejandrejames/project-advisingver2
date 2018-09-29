@@ -11,9 +11,7 @@
 	$result = $conn->query($sql);
 	while($row = $result->fetch_assoc()){
 		$sql2 = "INSERT INTO student_subject SET student_id = '".$studid."', subject_id = '".$row['subject_id']."', student_schlyr_id = '".$schlyr."', curriculum_id='".$currid."', semester='".$sem."', year_level='".$yrlvl."'";
-		echo $sql2;
 		$conn->query($sql2);
-
 	}
 
 	$sql = "SELECT * FROM student_subject,subject WHERE student_subject.subject_id = subject.subject_id AND student_id = '".$studid."' AND student_schlyr_id = '".$schlyr."' AND year_level = '".$yrlvl."' AND semester = '".$sem."'";

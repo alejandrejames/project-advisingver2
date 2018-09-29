@@ -28,62 +28,16 @@
 			    <button type="submit" class="btn btn-default">Submit</button>
 			  </div>
 			</div>
-			<div class="recents">
-				<div class="page-header">
-			  		<h1>Recent</h1>
-				</div>
+			<div class="col-md-12"><BR></div>
+			<div class="container-fluid">
 				<div class="col-md-4">
 					<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Recent Students</h3>
-					  </div>
-					  <div class="panel-body">
-					    <div class="list-group">
-					      <?php
-					      	$sql = "SELECT * FROM students";
-					      	$result = 1;
-					      ?>
-						  <a href="#" class="list-group-item">Cras justo odio</a>
-						  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-						  <a href="#" class="list-group-item">Morbi leo risus</a>
-						  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-						  <a href="#" class="list-group-item">Vestibulum at eros</a>
-						</div>
-					  </div>
-					</div>
-				</div>
-				<!--2nd Panel-->
-				<div class="col-md-4">
-					<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Recent Subjects</h3>
-					  </div>
-					  <div class="panel-body">
-					    <div class="list-group">
-						  <a href="#" class="list-group-item">Cras justo odio</a>
-						  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-						  <a href="#" class="list-group-item">Morbi leo risus</a>
-						  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-						  <a href="#" class="list-group-item">Vestibulum at eros</a>
-						</div>
-					  </div>
-					</div>
-				</div>
-				<!--3rd Panel-->
-				<div class="col-md-4">
-					<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Recent Curriculums</h3>
-					  </div>
-					  <div class="panel-body">
-					    <div class="list-group">
-						  <a href="#" class="list-group-item">Cras justo odio</a>
-						  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-						  <a href="#" class="list-group-item">Morbi leo risus</a>
-						  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-						  <a href="#" class="list-group-item">Vestibulum at eros</a>
-						</div>
-					  </div>
+						<div class="panel-heading">
+					    	<h3 class="panel-title">Students Per College</h3>
+					  	</div>
+					  	<div class="panel-body">
+					    	<canvas id="studentchart"></canvas>
+					  	</div>
 					</div>
 				</div>
 			</div>
@@ -94,5 +48,46 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/create.js"></script>
 	<script type="text/javascript" src="js/userdeffunc.js"></script>
+	<script type="text/javascript" src="js/Chart.bundle.js"></script>
+
+	<script>
+		var ctx = document.getElementById("studentchart").getContext('2d');
+		var myChart = new Chart(ctx, {
+    		type: 'bar',
+    		data: {
+        		labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        		datasets: [{
+            		label: '# of students',
+            		data: [12, 19, 3, 5, 2, 3],
+            		backgroundColor: [
+                		'rgba(255, 99, 132, 0.2)',
+                		'rgba(54, 162, 235, 0.2)',
+                		'rgba(255, 206, 86, 0.2)',
+                		'rgba(75, 192, 192, 0.2)',
+                		'rgba(153, 102, 255, 0.2)',
+                		'rgba(255, 159, 64, 0.2)'
+            		],
+            		borderColor: [
+                		'rgba(255,99,132,1)',
+                		'rgba(54, 162, 235, 1)',
+                		'rgba(255, 206, 86, 1)',
+                		'rgba(75, 192, 192, 1)',
+                		'rgba(153, 102, 255, 1)',
+                		'rgba(255, 159, 64, 1)'
+            		],
+            		borderWidth: 1
+        		}]
+    		},
+    		options: {
+        		scales: {
+            		yAxes: [{
+                		ticks: {
+                    		beginAtZero:true
+                		}
+            		}]
+        		}
+    		}
+		});
+	</script>
 	</body>
 </html>

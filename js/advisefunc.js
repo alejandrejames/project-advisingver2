@@ -1,8 +1,8 @@
 $(document).ready(function(){
      $("#advisebut1").click(function(){
-        console.log(1);
+        console.log(134);
         $("#advspnl").show();
-         $("#advdet").hide();
+        $("#advdet").hide();
         $.post("../backend/advisestud.php",
         {
             studid: $("#studidins").val(),
