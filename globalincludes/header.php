@@ -1,4 +1,9 @@
 <?php
+  if(isset($acctyid))
+    if($acctyid == 1)
+      $superadminpowers = '<li><a href="#" data-toggle="modal" data-target="#superadminpowers">Master Admin Privelleges</a></li>';
+    else
+      $superadminpowers = "";
   if($pagelvl=='1'){
     echo '
           <!--Navbar-->
@@ -37,7 +42,7 @@
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, Name of Adviser <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, '.$accfname.' '.$acclname.'<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="admin/admin.php">View Profile</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#about-modal">About</a></li>
@@ -94,6 +99,7 @@
                             <ul class="dropdown-menu">
                               <li><a href="../admin/admin.php">View Profile</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#about-modal">About</a></li>
+                              '.$superadminpowers.'
                               <li role="separator" class="divider"></li>
                               <li><a href="../backend/logout.php">Logout</a></li>
                             </ul>
@@ -313,5 +319,80 @@
               </div>
             </div>
 
+            <!--About Modal-->
+             <div class="modal fade bs-example-modal-lg" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Curriculum</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="col-md-12">
+                        <center>
+                          <h3>The developers</h3><br>
+                          <h5>S.Y. 2018-2019</h5>
+                        </center>
+                      </div>
+                      <div class="col-md-3">
+                        <center>
+                          <img src="data/img/default.jpg" alt="../data/img/default.jpg" height="200px" width="200px"><br>
+                          <p>Adam Jed Biñas</p><br>
+                          <p>BSCS 4-A</p><br>
+                          <p>Programmer</p><br>
+                        </center>
+                      </div>
+                      <div class="col-md-3">
+                        <center>
+                          <img src="data/img/default.jpg" alt="../data/img/default.jpg" height="200px" width="200px"><br>
+                          <p>Dominic Guillermo</p><br>
+                          <p>BSCS 4-A</p><br>
+                          <p>Designer</p><br>
+                        </center>
+                      </div>
+                      <div class="col-md-3">
+                        <center>
+                          <img src="data/img/default.jpg" alt="../data/img/default.jpg" height="200px" width="200px"><br>
+                          <p>Alejandre James Papina</p><br>
+                          <p>BSCS 4-B</p><br>
+                          <p>Programmer</p><br>
+                        </center>
+                      </div>
+                      <div class="col-md-3">
+                        <center>
+                          <img src="data/img/default.jpg" alt="../data/img/default.jpg" height="200px" width="200px"><br>
+                          <p>Aubrey Segovia</p><br>
+                          <p>BSCS 4-B</p><br>
+                          <p>Designer</p><br>
+                        </center>
+                      </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <!--About Modal-->
+             <div class="modal fade bs-example-modal-lg" id="superadminpowers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Master Admin Privellages</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 

@@ -14,7 +14,8 @@
 	}
 	$total++;
 	$sql = "INSERT INTO subject SET subject_id = '".$total."', subject_name = '".$subcode."', subject_description = '".$subdesc."', lecture_unit = '".$lectunits."', lab_unit = '".$labunits."', credit_unit = '".$credit."'";
-	$conn->query($sql);
-
-	echo '<div class="alert alert-success" role="alert">Success</div>';
+	if($conn->query($sql)==true)
+		echo '<div class="alert alert-success" role="alert">Success</div>';
+	else
+		echo '<div class="alert alert-danger" role="alert">ERROR - Unable to insert</div>';
 ?>

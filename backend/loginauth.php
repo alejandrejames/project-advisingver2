@@ -13,5 +13,5 @@
 		$_SESSION['accid'] = $row['account_id'];
 	}
 	else
-		echo 'Failed';
+		echo '<div class="alert alert-danger" role="alert">Try again</div>';
 ?>

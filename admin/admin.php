@@ -32,7 +32,7 @@
 						  </div>
 						  <div class="panel-body">
 						    	<div class="container-fluid">
-						  			<input type="text" id="editaccid" value="<?php echo $accid?>" hidden>
+						  			<input type="text" id="editaccid" value="<?php echo $_SESSION['accid']?>" hidden>
 						    		<button class="btn btn-success" id="editaccdet">Edit</button>
 					    			<div class="col-md-12">
 					    				<label for="accunameinp">Account Username</label>
@@ -108,9 +108,9 @@
 											while($row5 = $result5->fetch_assoc()){
 												echo '
 													<div class="col-md-12">
-														<button class="btn-group btn-group-justified btn btn-default" data-toggle="collapse" data-target="#studaccord-'.$row3['student_id'].'">'.$row3['student_id'].' - '.$row4['student_fname'].' '.$row4['student_lname'].' - Semester: '.$row5['semester'].'</button>
+														<button class="btn-group btn-group-justified btn btn-default" data-toggle="collapse" data-target="#studaccord-'.$row3['student_id'].'-'.$row5['semester'].'">'.$row3['student_id'].' - '.$row4['student_fname'].' '.$row4['student_lname'].' - Semester: '.$row5['semester'].'</button>
 													</div><br><br>
-													<div id="studaccord-'.$row3['student_id'].'" class="collapse">
+													<div id="studaccord-'.$row3['student_id'].'-'.$row5['semester'].'" class="collapse">
 														<table class="table table-striped">
 															<thead>
 																<tr>
@@ -158,5 +158,6 @@
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/create2.js"></script>
 	<script type="text/javascript" src="../js/userdeffunc2.js"></script>
+	<script type="text/javascript" src="../js/adminfunc.js"></script>
 	</body>
 </html>

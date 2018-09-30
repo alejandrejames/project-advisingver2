@@ -16,6 +16,32 @@ $(document).ready(function(){
             console.log(data);
         });
     });
+
+    $("#advbutfnl").click(function(){
+        console.log(134);
+        $.post("../backend/adviseprint.php",
+        {
+            studid: $("#studidins").val(),
+            currid: $("#curridins").val(),
+            schlyr: $("#selectschlyr").val(),
+            yrlvl: $("#selectyrlvl").val(),
+            sem: $("#selectsem").val()
+        },
+        function(data){
+            $("#print-details").html(data);
+            console.log(data);
+        });
+    });
+
+    $("#printbut").click(function(){
+        var printContents = document.getElementById("print-cont").innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    });
 });
 
 function advaddsub(subid){    

@@ -9,7 +9,7 @@
 
 	$sql = "UPDATE student_subject SET subject_grade = '".$grd."' WHERE student_id = '".$studid."' AND subject_id = '".$subid."' AND student_schlyr_id = '".$schlyr."' AND semester = '".$sem."'";
 	if($conn->query($sql)==true)
-		echo 'success';
+		echo '<div class="alert alert-success" role="alert">Successfully updated</div>';
 	else
-		echo 'failed';
+		echo '<div class="alert alert-danger" role="alert">ERROR - Try again later</div>';
 ?>

@@ -7,7 +7,7 @@ $(document).ready(function(){
         },
         function(data){
             if(data == 'Success')
-              window.location.replace("../index.php");  
+              window.location.replace("index.php");  
             else
                 $('#notif-area').html(data);
         });

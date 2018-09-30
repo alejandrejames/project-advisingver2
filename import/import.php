@@ -1,6 +1,7 @@
 <?php
 	include '../backend/connection.php';
 	$pagelvl = "2";
+	include '../globalincludes/loginauthen.php';
 ?>
 <!DOCTYPE html>
 <html>

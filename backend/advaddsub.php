@@ -10,8 +10,8 @@
 
 	$sql = "INSERT INTO student_subject SET student_id = '".$studid."', subject_id = '".$subid."', student_schlyr_id = '".$schlyr."', curriculum_id = '".$currid."', semester = '".$sem."', year_level = '".$yrlvl."'";
 	
-	if($conn->query($sql) == true)
-		echo 'Success';
+	if($conn->query($sql)==true)
+		echo '<div class="alert alert-success" role="alert">Success</div>';
 	else
-		echo 'Failed';
+		echo '<div class="alert alert-danger" role="alert">ERROR - Unable to insert</div>';
 ?>

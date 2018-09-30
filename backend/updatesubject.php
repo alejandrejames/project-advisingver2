@@ -9,7 +9,8 @@
 		$creditunits = $_POST['creditunits'];
 
 		$sql = "UPDATE subject SET subject_name = '".$subcode."', subject_description = '".$subname."', lecture_unit = '".$lecunits."', lab_unit = '".$labunits."', credit_unit = '".$creditunits."' WHERE subject_id = '".$subid."'";
-		$conn->query($sql);
-
-		echo 'Success';
+		if($conn->query($sql)==true)
+			echo '<div class="alert alert-success" role="alert">Successfully updated</div>';
+		else
+			echo '<div class="alert alert-danger" role="alert">ERROR - Try again later</div>';
 ?>

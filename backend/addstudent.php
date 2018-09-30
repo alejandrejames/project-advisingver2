@@ -9,7 +9,8 @@
 	$yrlvl = $_POST['yrlvl'];
 
 	$sql = "INSERT INTO student SET student_id='".$studid."', student_fname='".$fname."', student_lname='".$lname."', student_yrlvl='".$yrlvl."', college_id='".$collegeid."', curriculum_id='".$curriculum."'";
-	$conn->query($sql);
-
-	echo '<div class="alert alert-success" role="alert">Success</div>';
+	if($conn->query($sql)==true)
+		echo '<div class="alert alert-success" role="alert">Success</div>';
+	else
+		echo '<div class="alert alert-danger" role="alert">ERROR - Unable to insert</div>';
 ?>

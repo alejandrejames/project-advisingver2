@@ -103,7 +103,7 @@
 									        	<h4 class="modal-title" id="myModalLabel">Advising Slip</h4>
 									      	</div>
 									      	<div class="modal-body">
-									        	<div class="container-fluid">
+									        	<div class="container-fluid" id="print-cont">
 									        		<div class="col-md-12">
 									        			<center>
 									        				<h4>Bicol University</h4>
@@ -121,19 +121,22 @@
 									        					</tr>
 									        				</thead>
 									        				<tbody id="print-details">
-									        					<tr>
-									        						<td>CS20</td>
-									        						<td>Computer sumting</td>
-									        						<td>5.0</td>
-									        					</tr>
+
 									        				</tbody>
 									        			</table>
+									        		</div>
+									        		<div class="col-md-4"></div>
+									        		<div class="col-md-4"></div>
+									        		<div class="col-md-4">
+									        			<b><center>_____________________________</center></b>
+									        			<b><center><?php echo $accfname.' '.$acclname?></center></b><br>
+									        			<b><center><i>Adviser</i></center></b>
 									        		</div>
 									        	</div>
 									      	</div>
 									      	<div class="modal-footer">
 									        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        	<button type="button" class="btn btn-primary">Print</button>
+									        	<button type="button" class="btn btn-primary" id="printbut">Print</button>
 									      	</div>
 								    	</div>
 								  	</div>
