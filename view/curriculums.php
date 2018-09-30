@@ -1,6 +1,7 @@
 <?php
 	include '../backend/connection.php';
 	$pagelvl = "2";
+	include '../globalincludes/loginauthen.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,6 +77,7 @@
 				?>
 				</nav>		
 			</div>
+		</div>
 	<!--Scripts-->
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>

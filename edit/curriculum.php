@@ -1,7 +1,8 @@
 <?php
 	include '../backend/connection.php';
 	$pagelvl = "2";
-
+	include '../globalincludes/loginauthen.php';
+	
 	$currid = $_GET['currid'];
 	$sql = "SELECT * FROM curriculum,college WHERE curriculum.college_id = college.college_id AND curriculum_id='".$currid."'";
 	$result = $conn->query($sql);

@@ -2,7 +2,8 @@
 	$pagelvl = "2";
 	include '../backend/connection.php';
 	$subid = $_GET['subid'];
-
+	include '../globalincludes/loginauthen.php';
+	
 	$sql = "SELECT * FROM subject WHERE subject_id = '".$subid."'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();

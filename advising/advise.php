@@ -2,7 +2,8 @@
 	$pagelvl = "2";
 	include '../backend/connection.php';
 	$studid = $_GET['studid'];
-
+	include '../globalincludes/loginauthen.php';
+	
 	$sql = "SELECT * FROM student WHERE student_id = '".$studid."'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
@@ -93,7 +94,50 @@
 							    		
 							    	</tbody>
 							    </table>
-								<button class="btn btn-primary" id="advbutfnl">Finalize</button>
+								<button class="btn btn-primary" id="advbutfnl" data-toggle="modal" data-target="#printing-modal">Print Slip</button>
+								<div class="modal fade bs-example-modal-lg" id="printing-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+								  	<div class="modal-dialog modal-lg" role="document">
+								    	<div class="modal-content">
+								    		<div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        	<h4 class="modal-title" id="myModalLabel">Advising Slip</h4>
+									      	</div>
+									      	<div class="modal-body">
+									        	<div class="container-fluid">
+									        		<div class="col-md-12">
+									        			<center>
+									        				<h4>Bicol University</h4>
+									        				<h5>College of Science</h5>
+									        				<h5>Computer Science and Information Technologu Department</h5>
+									        			</center>
+									        		</div>
+									        		<div class="col-md-12">
+									        			<table class="table table-striped">
+									        				<thead>
+									        					<tr>
+									        						<th>Subject Code</th>
+									        						<th>Subject Name</th>
+									        						<th>Subject Units</th>
+									        					</tr>
+									        				</thead>
+									        				<tbody id="print-details">
+									        					<tr>
+									        						<td>CS20</td>
+									        						<td>Computer sumting</td>
+									        						<td>5.0</td>
+									        					</tr>
+									        				</tbody>
+									        			</table>
+									        		</div>
+									        	</div>
+									      	</div>
+									      	<div class="modal-footer">
+									        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        	<button type="button" class="btn btn-primary">Print</button>
+									      	</div>
+								    	</div>
+								  	</div>
+								</div>
 							  </div>
 							</div>
 						</div>

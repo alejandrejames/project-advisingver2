@@ -2,7 +2,8 @@
 	$pagelvl = "2";
 	include '../backend/connection.php';
 	$studid = $_GET['studid'];
-
+	include '../globalincludes/loginauthen.php';
+	
 	$sql = "SELECT * FROM student WHERE student_id = '".$studid."'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
@@ -113,7 +114,11 @@
 						
 					?>
 					<div class="col-md-8">
-
+						<div class="btn-group btn-group-justified" role="group" aria-label="...">
+							<div class="btn-group" role="group">
+						    	<a href="../advising/advise.php?studid=<?php echo $studid?>"><button type="submit" class="btn btn-primary">Advise</button></a>
+						  	</div>
+						</div><br>
 						<ul class="nav nav-tabs">
 						  <?php
 						  		$sql = "SELECT DISTINCT student_schlyr_id FROM student_subject WHERE student_id = '".$studid."'";
