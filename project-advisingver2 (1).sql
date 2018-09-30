@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2018 at 05:15 PM
+-- Generation Time: Sep 30, 2018 at 06:57 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -41,7 +41,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `account_usern`, `account_pass`, `acc_fname`, `acc_lname`, `acc_type_id`, `acc_status`) VALUES
-(1, 'super', '8d0f1de01fe57bc432ec5b8cbca39ec6', 'Naz', 'Naz', 2, 1);
+(1, 'super', '8d0f1de01fe57bc432ec5b8cbca39ec6', 'Naz', 'Naz', 2, 1),
+(2, 'studadv', 'pass', 'Glenn', 'Yanzon', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -244,7 +245,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `student_fname`, `student_lname`, `student_yrlvl`, `student_pict`, `college_id`, `curriculum_id`) VALUES
-('2015-02945', 'Alejandre', 'Papina', 4, '', 1, 1),
+('2015-02945', 'Alejandre James', 'Papina', 4, '', 1, 1),
 ('2015-11926', 'Dominic', 'Guillermo', 1, '', 1, 1),
 ('2015-6969', 'Loyd Jessie', 'Perez', 1, '', 1, 2);
 
@@ -274,34 +275,43 @@ INSERT INTO `student_schlyr` (`student_schlyr_id`, `student_schlyr`) VALUES
 --
 
 CREATE TABLE `student_subject` (
-  `student_id` varchar(255) NOT NULL,
-  `subject_id` int(255) NOT NULL,
-  `subject_grade` int(255) NOT NULL,
+  `student_id` varchar(10) NOT NULL,
+  `subject_id` int(9) NOT NULL,
+  `subject_grade` int(9) DEFAULT NULL,
   `student_schlyr_id` int(255) NOT NULL,
   `curriculum_id` int(255) NOT NULL,
   `semester` int(255) NOT NULL,
-  `year_level` int(255) NOT NULL
+  `year_level` int(255) NOT NULL,
+  `adviser_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_subject`
 --
 
-INSERT INTO `student_subject` (`student_id`, `subject_id`, `subject_grade`, `student_schlyr_id`, `curriculum_id`, `semester`, `year_level`) VALUES
-('2015-11926', 9, 90, 1, 1, 1, 1),
-('2015-11926', 10, 85, 1, 1, 1, 1),
-('2015-11926', 11, 0, 1, 1, 1, 1),
-('2015-11926', 12, 0, 1, 1, 1, 1),
-('2015-11926', 13, 0, 1, 1, 1, 1),
-('2015-11926', 14, 0, 1, 1, 1, 1),
-('2015-11926', 15, 0, 1, 1, 1, 1),
-('2015-02945', 9, 90, 1, 1, 1, 1),
-('2015-02945', 10, 91, 1, 1, 1, 1),
-('2015-02945', 11, 0, 1, 1, 1, 1),
-('2015-02945', 12, 0, 1, 1, 1, 1),
-('2015-02945', 13, 0, 1, 1, 1, 1),
-('2015-02945', 14, 0, 1, 1, 1, 1),
-('2015-02945', 15, 0, 1, 1, 1, 1);
+INSERT INTO `student_subject` (`student_id`, `subject_id`, `subject_grade`, `student_schlyr_id`, `curriculum_id`, `semester`, `year_level`, `adviser_id`) VALUES
+('2015-02945', 9, 90, 1, 1, 1, 1, 2),
+('2015-02945', 10, 85, 1, 1, 1, 1, 2),
+('2015-02945', 11, 86, 1, 1, 1, 1, 2),
+('2015-02945', 12, 70, 1, 1, 1, 1, 2),
+('2015-02945', 13, 70, 1, 1, 1, 1, 2),
+('2015-02945', 14, 80, 1, 1, 1, 1, 2),
+('2015-02945', 15, 95, 1, 1, 1, 1, 2),
+('2015-02945', 16, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 17, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 18, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 19, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 20, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 21, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 22, NULL, 1, 1, 2, 1, 0),
+('2015-02945', 23, NULL, 1, 1, 2, 1, 0),
+('2015-11926', 9, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 10, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 11, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 12, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 13, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 14, NULL, 1, 1, 1, 1, 2),
+('2015-11926', 15, NULL, 1, 1, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -334,10 +344,18 @@ INSERT INTO `subject` (`subject_id`, `subject_name`, `subject_description`, `lec
 (9, 'CS1', 'ICT Fundamentals', 2, 1, 3),
 (10, 'CS11', 'Intro to Computer Science', 2, 1, 3),
 (11, 'Math 1B', 'College Algebra', 5, 0, 5),
-(12, 'English 1', 'Study and Thinking Skills', 3, 0, 3),
+(12, 'Eng. 1', 'Study and Thinking Skills', 3, 0, 3),
 (13, 'Fil. 1', 'Komunikasyon sa Akademikong Filipino', 3, 0, 3),
 (14, 'PE 1', 'Physical Fitness and Gymnastics', 2, 0, 2),
-(15, 'NSTP 1', 'Nation Service Training Program 1', 3, 0, 3);
+(15, 'NSTP 1', 'Nation Service Training Program 1', 3, 0, 3),
+(16, 'CS12', 'Computer Programming 1', 1, 2, 3),
+(17, 'CS13', 'Data Structures and Algorithm', 2, 1, 3),
+(18, 'Physics 1', 'College Physics 1', 3, 1, 4),
+(19, 'Eng. 2', 'Writing in the Discipline (Communications for IT)', 3, 0, 3),
+(20, 'Fil. 2', 'Pagbasa at Pagsulat Tungo sa Pananaliksik', 3, 0, 3),
+(21, 'Soc.Sci 1', 'General Pyschology', 3, 0, 3),
+(22, 'PE 2', 'Fundamentals of Rythym and Dances', 2, 0, 2),
+(23, 'NSTP 2', 'National Service Training Program II', 3, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -357,16 +375,23 @@ CREATE TABLE `subject_curriculum` (
 --
 
 INSERT INTO `subject_curriculum` (`subject_id`, `curriculum_id`, `subject_yrlvl`, `subject_semester`) VALUES
-(5, 1, 1, 2),
-(6, 1, 1, 2),
-(7, 1, 1, 2),
+(3, 1, 4, 1),
+(4, 1, 3, 1),
 (9, 1, 1, 1),
 (10, 1, 1, 1),
 (11, 1, 1, 1),
 (12, 1, 1, 1),
 (13, 1, 1, 1),
 (14, 1, 1, 1),
-(15, 1, 1, 1);
+(15, 1, 1, 1),
+(16, 1, 1, 2),
+(17, 1, 1, 2),
+(18, 1, 1, 2),
+(19, 1, 1, 2),
+(20, 1, 1, 2),
+(21, 1, 1, 2),
+(22, 1, 1, 2),
+(23, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -379,6 +404,17 @@ CREATE TABLE `subject_preq` (
   `subject_id` int(11) NOT NULL,
   `subject_id_preq` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject_preq`
+--
+
+INSERT INTO `subject_preq` (`preq_id`, `subject_id`, `subject_id_preq`) VALUES
+(2, 18, 11),
+(3, 19, 12),
+(4, 20, 13),
+(5, 22, 14),
+(6, 23, 15);
 
 --
 -- Indexes for dumped tables
@@ -450,6 +486,13 @@ ALTER TABLE `student_schlyr`
   ADD PRIMARY KEY (`student_schlyr_id`);
 
 --
+-- Indexes for table `student_subject`
+--
+ALTER TABLE `student_subject`
+  ADD UNIQUE KEY `stud_id_2` (`student_id`,`subject_id`),
+  ADD KEY `stud_id` (`student_id`,`subject_id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -475,7 +518,7 @@ ALTER TABLE `subject_preq`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `acc_type`
 --
@@ -520,7 +563,7 @@ ALTER TABLE `student_schlyr`
 -- AUTO_INCREMENT for table `subject_preq`
 --
 ALTER TABLE `subject_preq`
-  MODIFY `preq_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `preq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
