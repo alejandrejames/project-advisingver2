@@ -6,8 +6,9 @@ $(document).ready(function(){
             pass: $("#loginpass").val()
         },
         function(data){
-            if(data == 'Success')
-              window.location.replace("index.php");  
+            if(data == 'Success'){
+              window.location.replace("../index.php");  
+            }
             else
                 $('#notif-area').html(data);
         });

@@ -53,4 +53,39 @@ function removecursub(subid,year,sem){
             $("#tbodysublist"+year+sem).load('../backend/datacurriculum.php?code=2&sem='+sem+'&year='+year);
             $("#addsubjectcurr").load('../backend/datacurriculum.php?code=1');
     });
-}      
+}
+
+function managepreq(subid){    
+    $("#addsubpreqtable").load('../backend/datasubject.php?code=1&subid='+subid);
+    $("#subpreqtable").load('../backend/datasubject.php?code=2&subid='+subid);
+    $("#pagina-sect-preq").load('../backend/datasubject.php?code=3&subid='+subid);
+}
+
+function addpreqsub(subid,preq){    
+    $.post("../backend/addpreqsub.php",
+        {
+            preq: preq,
+            subid: subid,
+            currid: $("#editcurrid").val()
+        },
+        function(data){
+            $("#preq-notifarea").html(data);
+            $("#addsubpreqtable").load('../backend/datasubject.php?code=1&subid='+subid);
+            $("#subpreqtable").load('../backend/datasubject.php?code=2&subid='+subid);
+            //$("#tbodysublist"+year+sem).remove();
+    });
+}
+
+function removepreqsub(subid,preq){    
+    $.post("../backend/removepreqsub.php",
+        {
+            preq: preq,
+            subid: subid,
+            currid: $("#editcurrid").val()
+        },
+        function(data){
+        $("#preq-notifarea").html(data);
+        $("#addsubpreqtable").load('../backend/datasubject.php?code=1&subid='+subid);
+        $("#subpreqtable").load('../backend/datasubject.php?code=2&subid='+subid);
+    });
+}          

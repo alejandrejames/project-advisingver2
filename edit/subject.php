@@ -72,7 +72,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<!--<div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 						    	<h3 class="panel-title">Pre-requisites</h3>
@@ -169,14 +169,14 @@
 											$numpages = $total/10;
 											$pagenum = 10;
 
-											echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
+											echo '<input type="number" id="totpages2" value="'.$numpages.'" hidden>
 												<nav aria-label="Page Navigation">
 						                            <ul class="pagination">';
 						                    for($i=0;$i<$numpages;$i++){
 												if($i==0)
-													echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',3,0,'.$pagenum.','.$subid.')">'.($i+1).'</a></li>';
+													echo '<li class="active" id="page2-'.$i.'"><a href="#" onclick="pagination2('.$i.',3,0,'.$pagenum.','.$subid.')">'.($i+1).'</a></li>';
 												else 
-													echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',3,'.$pagenum.','.($pagenum = $pagenum+$pagenum).','.$subid.')">'.($i+1).'</a></li>';
+													echo '<li class="" id="page2-'.$i.'"><a href="#" onclick="pagination2('.$i.',3,'.$pagenum.','.($pagenum = $pagenum+$pagenum).','.$subid.')">'.($i+1).'</a></li>';
 						                                    }
 										?>
 										</div>
@@ -185,6 +185,7 @@
 						  	</div>
 						</div>
 					</div>
+				-->
 				</div>
 			</div>		
 		</div>

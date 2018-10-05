@@ -64,6 +64,7 @@
 					$total = $row['TOTAL'];
 					$numpages = $total/10;
 					$pagenum = 10;
+					$pagenumper = 0;
 
 					echo '<input type="number" id="totpages" value="'.$pagenum.'" hidden>
 						<nav aria-label="Page Navigation">
@@ -72,7 +73,7 @@
 						if($i==0)
 							echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',2,0,'.$pagenum.')">'.($i+1).'</a></li>';
 						else
-							echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',2,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+							echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',2,'.($pagenumper = $pagenumper+$pagenum).','.$pagenum.')">'.($i+1).'</a></li>';
                                     }
 				?>
 				</nav>		

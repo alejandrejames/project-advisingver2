@@ -46,6 +46,7 @@
                             <ul class="dropdown-menu">
                               <li><a href="admin/admin.php">View Profile</a></li>
                               <li><a href="#" data-toggle="modal" data-target="#about-modal">About</a></li>
+                              '.$superadminpowers.'
                               <li role="separator" class="divider"></li>
                               <li><a href="backend/logout.php">Logout</a></li>
                             </ul>
@@ -386,7 +387,96 @@
                   </div>
                   <div class="modal-body">
                     <div class="container-fluid">
-                      
+                        <div class="col-md-12">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Add New Account</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div class="col-md-12" id="superad-notifarea"></div>
+                              <div class="col-md-6">
+                                  <label for="newaccuname">Account Username</label>
+                                  <input type="text" class="form-control supadfield" id="newaccuname" placeholder="Username">
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="newaccpass">Account Type</label>
+                                  <select class="form-control" id="newacctyid">
+                                    <?php
+                                      $sql = "SELECT * FROM acc_type";
+                                      $result = $conn->query($sql);
+                                      while($row = $result->fetch_assoc()){
+                                        echo '<option value="'.$row['acc_type_id'].'">'.$row['acc_type_name'].'</option>';
+                                      }
+                                    ?>
+                                  </select>
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="newaccfname">Account First Name</label>
+                                  <input type="text" class="form-control supadfield" id="newaccfname" placeholder="First Name">
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="newacclname">Account Last Name</label>
+                                  <input type="text" class="form-control supadfield" id="newacclname" placeholder="First Name">
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="newaccpass">Account Password</label>
+                                  <input type="password" class="form-control supadfield" id="newaccpass" placeholder="Password">
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="newaccpassconf">Account Password Confirm</label>
+                                  <input type="password" class="form-control supadfield" id="newaccpassconf" placeholder="Confirm Password">
+                              </div>
+                              <div class="col-md-12">
+                                <br><button class="btn btn-success" id="addnewacc" disabled>Add Account</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Update Account Status</h3>
+                            </div>
+                            <div class="panel-body">
+                              <div class="col-md-12" id="superadupdt-notifarea"></div>
+                              <div class="col-md-4">
+                                <label for="uptaccid">Account</label>
+                                <select class="form-control" id="uptaccid">
+                                  <?php
+                                    $sql = "SELECT * FROM account";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                      echo '<option value="'.$row['account_id'].'">'.$row['acc_fname'].' '.$row['acc_lname'].'</option>';
+                                    }
+                                  ?>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <label for="uptacctyid">Account Type</label>
+                                <select class="form-control" id="uptacctyid">
+                                  <?php
+                                    $sql = "SELECT * FROM acc_type";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                      echo '<option value="'.$row['acc_type_id'].'">'.$row['acc_type_name'].'</option>';
+                                    }
+                                  ?>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <label for="uptaccstat">Account Status</label>
+                                <select class="form-control" id="uptaccstat">
+                                  <option value="1">Active</option>
+                                  <option value="2">De-activated</option>
+                                  <option value="3">Reset</option>
+                                  <option value="0">Inactive</option>
+                                </select>
+                              </div>
+                              <div class="col-md-12">
+                                <br><button class="btn btn-success" id="updtaccty">Update Account</button>
+                              </div>
+                            </div>
+                        </div>
                     </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -395,4 +485,5 @@
               </div>
             </div>
           </div>
+        </div>
 

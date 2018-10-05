@@ -168,12 +168,7 @@
 												<?php
 
 												?>
-												<tr>
-													<td>CS01</td>
-													<td>ICT</td>
-													<td><input type="number" class="form-control" name=""></td>
-													<td><button class="btn btn-success">Update</button></td>
-												</tr>
+												
 											</tbody>
 										</table>
 									</div>

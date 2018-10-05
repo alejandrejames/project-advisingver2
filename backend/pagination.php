@@ -40,7 +40,6 @@
 			}
 			case '3':
 				$sql = "SELECT * FROM subject WHERE subject_id != '".$adddata."' LIMIT ".$start.",".$end."";
-				echo $sql;
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
 						$sql2 = "SELECT * FROM subject_preq WHERE subject_id = '".$adddata."' AND subject_id_preq = '".$row['subject_id']."'";
@@ -52,9 +51,6 @@
 								<tr>
 									<td>'.$row['subject_name'].'</td>
 									<td>'.$row['subject_description'].'</td>
-									<td>'.$row['lecture_unit'].'</td>
-									<td>'.$row['lab_unit'].'</td>
-									<td>'.$row['credit_unit'].'</td>
 									<td><button type="text" class="btn btn-primary" onclick="addpreqsub('.$adddata.','.$row['subject_id'].')">Add</button></td>
 								</tr>
 						    ';
@@ -64,7 +60,7 @@
 				$sql = "SELECT * FROM subject LIMIT ".$start.",".$end."";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
-					$sql2 = "SELECT * FROM subject_curriculum WHERE subject_id = '".$row['subject_id']."'";
+					$sql2 = "SELECT * FROM subject_curriculum WHERE subject_id = '".$row['subject_id']."' AND curriculum_id = '".$adddata."'";
 					$result2 = $conn->query($sql2);
 					if($result2->fetch_assoc() > 0)
 						{}

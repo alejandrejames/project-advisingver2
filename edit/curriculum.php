@@ -35,7 +35,7 @@
 					<div id="notif-area"></div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-					    	<h3 class="panel-title">Edit Subject Details</h3>
+					    	<h3 class="panel-title">Edit Curriculum Details</h3>
 						</div>
 					  	<div class="panel-body">
 					    	<button class="btn btn-success" id="editcurriculumdet">Edit</button>
@@ -161,18 +161,23 @@
 									$result = $conn->query($sql);
 									$row = $result->fetch_assoc();
 									$total = $row['TOTAL'];
-									$numpages = $total/10;
+									$numpages = floor($total/10);
 									$pagenum = 10;
+									$pagenumper = 0;
 
 									echo '<input type="number" id="totpages" value="'.$numpages.'" hidden>
 										<nav aria-label="Page Navigation">
 											<ul class="pagination">';
 									for($i=0;$i<$numpages;$i++){
 										if($i==0)
-											echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,0,'.$pagenum.')">'.($i+1).'</a></li>';
+											echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,0,'.$pagenum.','.$currid.')">'.($i+1).'</a></li>';
 										else 
-											echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+											echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagination('.$i.',4,'.($pagenumper = $pagenumper+$pagenum).','.$pagenum.','.$currid.')">'.($i+1).'</a></li>';
 									}
+									echo '
+										</ul>
+										</nav>
+									';
 								?>
 							</div>
 						</div>
@@ -217,7 +222,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,1)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -252,7 +258,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,2)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -287,7 +294,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',1,3)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -326,7 +334,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,1)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -361,7 +370,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,2)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -396,7 +406,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',2,3)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -435,7 +446,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,1)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -470,7 +482,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,2)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -505,7 +518,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',3,3)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -544,7 +558,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,1)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -579,7 +594,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,2)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -614,7 +630,8 @@
 											  							echo '
 											  								<tr>
 											  									<td>'.$row['subject_name'].'</td>
-											  									<td>'.$row['subject_description'].'</td>
+											  									<td>'.$row['subject_description'].'<br>
+											  										<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a></td>
 											  									<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].',4,3)">Remove</button></td>
 											  								</tr>
 											  								';
@@ -630,6 +647,63 @@
 								</div>
 							</div>
 					  	</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade bs-example-modal-lg" id="preqmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Add Prequisites</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<div class="container-fluid" id="preq-notifarea"></div>
+								<div class="col-md-6">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+									    	<h3 class="panel-title">Panel Prequisites</h3>
+									  	</div>
+									  	<div class="panel-body">
+									    	<table class="table table-hover">
+									    		<thead>
+									    			<tr>
+									    				<th>Subject Code</th>
+									    				<th>Subject Description</th>
+									    				<th>Units</th>
+									    			</tr>
+									    		</thead>
+									    		<tbody id="subpreqtable">
+									    			
+									    		</tbody>
+									    	</table>
+									  	</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="preqsearch" id="preqsearch" placeholder="Search">
+									<table class="table table-hover">
+									    <thead>
+									    	<tr>
+									    		<th>Subject Code</th>
+									    		<th>Subject Description</th>
+									    		<th>Units</th>
+									    	</tr>
+									    </thead>
+									    <tbody id="addsubpreqtable"  class="pagina-tbl2">
+									    	
+									    </tbody>
+									</table>
+									<div id="pagina-sect-preq">
+									</div>
+								</div>
+							</div>                    
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
 					</div>
 				</div>
 			</div>

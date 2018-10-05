@@ -6,7 +6,6 @@
 	switch ($type) {
 		case 'subjects':
 			$sql = "SELECT * FROM subject WHERE subject_name LIKE '%".$searchval."%' OR subject_description LIKE '%".$searchval."%'";
-			echo $sql;
 			$result = $conn->query($sql);
 			$num = 0;
 			while($row = $result->fetch_assoc()){

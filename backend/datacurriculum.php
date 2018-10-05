@@ -82,7 +82,9 @@
 				echo '
 					<tr>
 						<td>'.$row['subject_name'].'</td>
-						<td>'.$row['subject_description'].'</td>
+						<td>'.$row['subject_description'].'<br>
+							<a href="#" data-toggle="modal" data-target="#preqmodal" onclick="managepreq('.$row['subject_id'].')">Manage Prequisites</a>
+						</td>
 						<td><button class="btn btn-danger" onclick="removecursub('.$row['subject_id'].','.$row['subject_yrlvl'].','.$row['subject_semester'].')">Remove</button></td>
 					</tr>
 					';
