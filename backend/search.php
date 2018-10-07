@@ -159,6 +159,25 @@
 						';
 							    			}
 			break;
+		case 'prequisites':
+			$adddata = $_POST['adddata'];
+			$sql = "SELECT * FROM subject WHERE subject_id != '".$adddata."' AND (subject_name LIKE '%".$searchval."%' OR subject_description LIKE '%".$searchval."%')";
+			$result = $conn->query($sql);
+			while($row = $result->fetch_assoc()){
+				$sql2 = "SELECT * FROM subject_preq WHERE subject_id = '".$adddata."' AND subject_id_preq = '".$row['subject_id']."'";
+				$result2 = $conn->query($sql2);
+				if($result2->fetch_assoc() > 0)
+					{}
+				else
+					echo '
+						<tr>
+							<td>'.$row['subject_name'].'</td>
+							<td>'.$row['subject_description'].'</td>
+							<td><button type="text" class="btn btn-primary" onclick="addpreqsub('.$adddata.','.$row['subject_id'].')">Add</button></td>
+						</tr>
+					';
+				}
+			break;
 		default:
 			# code...
 			break;

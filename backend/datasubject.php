@@ -5,7 +5,7 @@
 	$subid = $_GET['subid'];
 	switch ($code) {
 		case '1':
-			$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."' LIMIT 0,5";
+			$sql = "SELECT * FROM subject WHERE subject_id != '".$subid."' LIMIT 0,7";
 						    						$result = $conn->query($sql);
 						    						while($row = $result->fetch_assoc()){
 						    							$sql2 = "SELECT * FROM subject_preq WHERE subject_id = '".$subid."' AND subject_id_preq = '".$row['subject_id']."'";
@@ -40,8 +40,8 @@
 				$result = $conn->query($sql);
 				$row = $result->fetch_assoc();
 				$total = $row['TOTAL'];
-				$numpages = floor($total/5);
-				$pagenum = 5;
+				$numpages = floor($total/7);
+				$pagenum = 7;
 				$pagenumper = $pagenum;
 
 				echo '<input type="number" id="totpages2" value="'.$numpages.'" hidden>

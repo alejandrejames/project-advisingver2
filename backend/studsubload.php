@@ -1,7 +1,9 @@
 <?php
 	include 'connection.php';
 
+	$schlyr = $_POST['schlyr'];
 	$studid = $_POST['studid'];
+
 	if(!isset($_POST['sem'])){
 		$schlyr = 1;
 		$sem = 1;
@@ -12,6 +14,7 @@
 			$schlyr = 0;
 		else
 			$schlyr = $_POST['schlyr'];
+
 		$sem = $_POST['sem'];
 		$sql = "SELECT * FROM student_subject,subject WHERE student_subject.subject_id = subject.subject_id AND student_id = '".$studid."' AND student_schlyr_id = '".$schlyr."' AND semester = '".$sem."'";
 	}

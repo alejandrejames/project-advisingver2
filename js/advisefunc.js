@@ -3,7 +3,7 @@ $(document).ready(function(){
         console.log(134);
         $("#advspnl").show();
         $("#advdet").hide();
-        $.post("../backend/advisestud.php",
+        $.post("../backend/advisestud2.php",
         {
             studid: $("#studidins").val(),
             currid: $("#curridins").val(),

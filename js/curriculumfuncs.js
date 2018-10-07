@@ -59,6 +59,7 @@ function managepreq(subid){
     $("#addsubpreqtable").load('../backend/datasubject.php?code=1&subid='+subid);
     $("#subpreqtable").load('../backend/datasubject.php?code=2&subid='+subid);
     $("#pagina-sect-preq").load('../backend/datasubject.php?code=3&subid='+subid);
+    $("#adddata2").val(subid);
 }
 
 function addpreqsub(subid,preq){    

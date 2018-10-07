@@ -684,6 +684,8 @@
 								</div>
 								<div class="col-md-6">
 									<input type="text" class="form-control" name="preqsearch" id="preqsearch" placeholder="Search">
+									<input type="text" id="search-type2" value="prequisites" hidden>
+									<input type="text" id="adddata2" hidden>
 									<table class="table table-hover">
 									    <thead>
 									    	<tr>

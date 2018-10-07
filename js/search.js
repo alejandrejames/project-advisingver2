@@ -12,5 +12,17 @@ $(document).ready(function(){
         });
     });
 
+    $("#preqsearch").keyup(function(){
+        $.post("../backend/search.php",
+        {
+            searchval: $("#preqsearch").val(),
+            type: $("#search-type2").val(),
+            adddata: $("#adddata2").val()
+        },
+        function(data){
+            $(".pagina-tbl2").html(data);
+            //console.log(data);
+        });
+    });
    
 });
