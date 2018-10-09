@@ -192,6 +192,100 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Import Student Template</h3>
+						</div>
+						<div class="panel-body">
+							<div class="container-fluid">
+								<a href="../data/import/students.csv" download><button type="button" class="btn btn-success">Download .csv</button></a>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>student_id</th>
+											<th>student_fname</th>
+											<th>student_lname</th>
+											<th>student_yrlvl</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>sample</td>
+											<td>sample</td>
+											<td>sample</td>
+											<td>sample</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Import Subject Template</h3>
+						</div>
+						<div class="panel-body">
+							<div class="container-fluid">
+								<a href="../data/import/subject.csv" download><button type="button" class="btn btn-success">Download .csv</button></a>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>subject_code</th>
+											<th>subject_name</th>
+											<th>lab_units</th>
+											<th>lec_units</th>
+											<th>cred_units</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>sample</td>
+											<td>sample</td>
+											<td>sample</td>
+											<td>sample</td>
+											<td>sample</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Import Grades Template</h3>
+						</div>
+						<div class="panel-body">
+							<div class="container-fluid">
+								<a href="../data/import/updtgrade.csv" download><button type="button" class="btn btn-success">Download .csv</button></a>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>student_id</th>
+											<th>student_grade</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>sample</td>
+											<td>sample</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>		
 		</div>
 	<!--Scripts-->
