@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2018 at 05:22 PM
+-- Generation Time: Oct 30, 2018 at 06:05 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -42,8 +42,9 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `account_usern`, `account_pass`, `acc_fname`, `acc_lname`, `acc_type_id`, `acc_status`) VALUES
 (1, 'super', '8d0f1de01fe57bc432ec5b8cbca39ec6', 'Dominic', 'Guillermo', 2, 1),
-(2, 'studadv', 'pass', 'Glenn', 'Yanzon', 1, 1),
-(3, 'adviser', 'pass', 'Aubrey', 'Segovia', 1, 0);
+(2, 'studadv', 'pass', 'Lea', 'Austero', 1, 1),
+(3, 'adviser', 'pass', 'Aubrey', 'Segovia', 1, 1),
+(4, 'deptchair', 'pass', 'Rodel', 'Naz', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,8 @@ INSERT INTO `acc_type` (`acc_type_id`, `acc_type_name`) VALUES
 (1, 'Adviser'),
 (2, 'super admin'),
 (3, 'admin_approver'),
-(4, 'schedule deputy');
+(4, 'schedule deputy'),
+(5, 'Department Chair');
 
 -- --------------------------------------------------------
 
@@ -264,21 +266,13 @@ CREATE TABLE `student_subject` (
 --
 
 INSERT INTO `student_subject` (`student_id`, `subject_id`, `subject_grade`, `student_schlyr_id`, `curriculum_id`, `semester`, `year_level`, `adviser_id`) VALUES
-('2015-11926', 15, 2.5, 1, 1, 1, 1, 0),
-('2015-11926', 16, 3, 1, 1, 1, 1, 0),
-('2015-11926', 17, 2.6, 1, 1, 1, 1, 0),
-('2015-11926', 18, 1.8, 1, 1, 1, 1, 0),
-('2015-11926', 19, 1.3, 1, 1, 1, 1, 0),
-('2015-11926', 20, 3.5, 1, 1, 1, 1, 0),
-('2015-11926', 21, 3, 1, 1, 1, 1, 0),
-('2015-11926', 22, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 23, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 24, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 25, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 26, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 27, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 28, NULL, 1, 1, 2, 1, 0),
-('2015-11926', 29, NULL, 1, 1, 2, 1, 0);
+('2015-11926', 15, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 16, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 17, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 18, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 19, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 20, NULL, 1, 1, 1, 1, 0),
+('2015-11926', 21, NULL, 1, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -478,12 +472,12 @@ ALTER TABLE `subject_preq`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `acc_type`
 --
 ALTER TABLE `acc_type`
-  MODIFY `acc_type_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `acc_type_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `class`
 --

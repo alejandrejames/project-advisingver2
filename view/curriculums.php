@@ -48,6 +48,7 @@
 												<td>'.$num.'</td>
 												<td>'.$row['curriculum_name'].'</td>
 												<td>'.$row['college_name'].'</td>
+												<td><a href="curriculumsview.php?currid='.$row['curriculum_id'].'"><button class="btn btn-success">View</button></a></td>
 												<td><a href="../edit/curriculum.php?currid='.$row['curriculum_id'].'"><button class="btn btn-success">Edit</button></a></td>
 											</tr>
 										';

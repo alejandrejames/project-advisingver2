@@ -12,6 +12,10 @@
 	$yrlvl = $row['student_yrlvl'];
 	$collid = $row['college_id'];
 	$currid = $row['curriculum_id'];
+	$sql = "SELECT * FROM curriculum WHERE curriculum_id='".$currid."'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
+	$currname = $row['curriculum_name'];
 
 ?>
 <!DOCTYPE html>
@@ -105,11 +109,34 @@
 									      	<div class="modal-body">
 									        	<div class="container-fluid" id="print-cont">
 									        		<div class="col-md-12">
-									        			<center>
-									        				<h4>Bicol University</h4>
-									        				<h5>College of Science</h5>
-									        				<h5>Computer Science and Information Technologu Department</h5>
-									        			</center>
+									        			<div class="col-md-4">
+									        				<center>
+									        					<img src="../data/img/bu_logo.png" height="100px" width="100px">
+									        				</center>
+									        			</div>
+									        			<div class="col-md-4">
+									        				<center>
+									        					<h4><b>Bicol University</b></h4>
+									        					<h5><b>College of Science</b></h5>
+									        					<h5><b>Computer Science and Information Technology Department</b></h5>
+									        				</center>
+									        			</div>
+									        			<div class="col-md-4">
+									        				<center>
+									        					<img src="../data/img/cs_logo.png" height="100px" width="100px">
+									        				</center>
+									        			</div>
+									        		</div>
+									        		<div class="col-md-12">
+									        			<div class="col-md-6">
+									        				<h5><b><i>Name: </i></b><u><?php echo $studfname.' '.$studlname?></u></h5>
+									        				<h5><b><i>Course: </i></b><u><?php echo $currname?></u></h5>
+									        			</div>
+									        			<div class="col-md-6">
+									        				<h5><b><i>Scholarship: </i></b><u><?php echo $studfname.' '.$studlname?></u></h5>
+									        				<input type="checkbox" name="yes" id="radyes"><label for="radyes">Yes</label><input type="checkbox" name="no" id="radno"><label for="rad">No</label>
+									        				<h5><b><i>If Yes: </i></b>_________________________________________</h5>
+									        			</div>
 									        		</div>
 									        		<div class="col-md-12">
 									        			<table class="table table-striped">
@@ -125,7 +152,18 @@
 									        				</tbody>
 									        			</table>
 									        		</div>
-									        		<div class="col-md-4"></div>
+									        		<div class="col-md-4">
+									        			<b><center>_____________________________</center></b>
+									        			<b><center>
+									        				<?php
+									        					$sql = "SELECT * FROM account WHERE acc_type_id = '5'";
+									        					$result = $conn->query($sql);
+									        					$row = $result->fetch_assoc();
+									        					echo $row['acc_fname']." ".$row['acc_lname'];
+									        				?>
+									        			</center></b><br>
+									        			<b><center><i>Department Chair.</i></center></b>
+									        		</div>
 									        		<div class="col-md-4"></div>
 									        		<div class="col-md-4">
 									        			<b><center>_____________________________</center></b>
