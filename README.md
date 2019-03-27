@@ -16,7 +16,7 @@ following semester/schoolyear automatically.
 2. Extract the contents of the zip file to C:/xampp/htdocs/
 3. Open XAMPP and start the Apache, and MySql server.
 4. Go to your browser and type in localhost/phpmyadmin.
-5. Create a new database called 'project-thesis' without the quotes.
+5. Create a new database called 'project-advisingver2' without the quotes.
 6. Click the database and click import.
 7. Import the project-adviserver.sql.
 8. Go to your browser and input localhost/project-advisingver2-master
