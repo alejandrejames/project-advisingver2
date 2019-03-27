@@ -93,4 +93,3 @@ function advremsub(subid){
             //$("#tbodysublist"+year+sem).remove();
     });
 }
-$.get("../codes/php/delete_studentclass.php?class_id="+class_id+"&student_id="+student_id, function( result ){
