@@ -1,6 +1,6 @@
 ## project-advisingver2
 
-![image](http://i63.tinypic.com/34gao42.jpg)
+![image](http://i66.tinypic.com/6xu6b8.jpg)
 ## Description
 
 A successor to the old project-advising with major improvements. project-advising is a web system
